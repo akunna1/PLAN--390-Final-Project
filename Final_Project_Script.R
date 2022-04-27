@@ -32,7 +32,7 @@ arrest_data_2018$month_of_arrest <- as.factor(arrest_data_2018$month_of_arrest)
 # plotting the arrests in 2018 by months
 month_data <- arrest_data_2018 %>%
   group_by(month_of_arrest) %>%
-  summarise(Total = n()) # grouping the data with month and count
+  summarise(Total = n()) # grouping the data into month by count
 
 #see in tabular form
 data.table(month_data)
@@ -47,7 +47,7 @@ ggplot(month_data, aes(month_of_arrest,Total)) +
 #Race Analysis
 race_data <- arrest_data_2018 %>%
   group_by(Race) %>%
-  summarise(Total = n()) # grouping the data with race and count
+  summarise(Total = n()) # grouping the data into race by count
 
 #filter data to remove NA
 race_data = filter(race_data, !is.na(Race))
@@ -74,7 +74,7 @@ arrest_data_2019$month_of_arrest <- as.factor(arrest_data_2019$month_of_arrest)
 # plotting the arrests in 2019 by months
 month_data <- arrest_data_2019 %>%
   group_by(month_of_arrest) %>%
-  summarise(Total = n()) # grouping the data with month and count
+  summarise(Total = n()) # grouping the data into month by count
 
 #see in tabular form
 data.table(month_data)
@@ -89,7 +89,7 @@ ggplot(month_data, aes(month_of_arrest,Total)) +
 #Race Analysis
 race_data <- arrest_data_2019 %>%
   group_by(Race) %>%
-  summarise(Total = n()) # grouping the data with race and count
+  summarise(Total = n()) # grouping the data into race by count
 
 #filter data to remove NA
 race_data = filter(race_data, !is.na(Race))
@@ -117,7 +117,7 @@ arrest_data_2020$month_of_arrest <- as.factor(arrest_data_2020$month_of_arrest)
 # plotting the arrests in 2020 by months
 month_data <- arrest_data_2020 %>%
   group_by(month_of_arrest) %>%
-  summarise(Total = n()) # grouping the data with month and count
+  summarise(Total = n()) # grouping the data into month by count
 
 #see in tabular form
 data.table(month_data)
@@ -132,7 +132,7 @@ ggplot(month_data, aes(month_of_arrest,Total)) +
 #Race Analysis
 race_data <- arrest_data_2020 %>%
   group_by(Race) %>%
-  summarise(Total = n()) # grouping the data with race and count
+  summarise(Total = n()) # grouping the data into race by count
 
 #filter data to remove NA
 race_data = filter(race_data, !is.na(Race))
@@ -159,7 +159,7 @@ arrest_data$month_of_arrest <- as.factor(arrest_data$month_of_arrest)
 # plotting the arrests in 2018 - 2020 by months
 month_data <- arrest_data %>%
   group_by(month_of_arrest) %>%
-  summarise(Total = n()) # grouping the data with month and count
+  summarise(Total = n()) # grouping the data into month by count
 
 #see in tabular form
 data.table(month_data)
@@ -202,7 +202,7 @@ write_csv(age_summary_by_gender, "age_summary_by_gender.csv")
 # Weapon Present Analysis
 weapon_data <- arrest_data %>%
   group_by(Weapon_Present) %>%
-  summarise(Total = n()) # grouping the data with Weapon Type and count
+  summarise(Total = n()) # grouping the data into Weapon Type by count
 
 #filter data to remove NA
 weapon_data = filter(weapon_data, !is.na(Weapon_Present))
@@ -213,7 +213,7 @@ write_csv(weapon_data, "weapon_data.csv")
 # Under the Influence (UI) Analysis
 UI_data <- arrest_data %>%
   group_by(Drugs_or_Alcohol_Present) %>%
-  summarise(Total = n()) # grouping the data with Drugs or Alcohol Present data and count
+  summarise(Total = n()) # grouping the data into Drugs or Alcohol Present data by count
 
 #filter data to remove NA
 UI_data = filter(UI_data, !is.na(Drugs_or_Alcohol_Present))
@@ -226,11 +226,10 @@ legend(1, 1, c("No","Unknown","Yes"), cex = 0.4, fill = colors1)
 # Crime Type Analysis
 crime_type_data <- arrest_data %>%
   group_by(Primary_Charge) %>%
-  summarise(Total = n()) # grouping the data with Primary Charge and count
+  summarise(Total = n()) # grouping the data into Primary Charge by count
 
 #filter data to remove NA
 crime_type_data = filter(crime_type_data, !is.na(Primary_Charge))
 crime_type_data
 view(crime_type_data)
-
 
