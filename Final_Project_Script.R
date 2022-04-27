@@ -9,8 +9,6 @@ library(data.table) # table formated result
 library(ggplot2) # visualization
 library(scales)# graphical scaling
 
-
-
 # Importing my .csv data to the Global Environment
 # 3 years of data
 arrest_data_2018 = read_csv("2018_police_data.csv")
@@ -202,4 +200,37 @@ age_summary_by_gender
 write_csv(age_summary_by_gender, "age_summary_by_gender.csv")
 
 # Weapon Present Analysis
-table(arrest_data$Weapon_Present)
+weapon_data <- arrest_data %>%
+  group_by(Weapon_Present) %>%
+  summarise(Total = n()) # grouping the data with Weapon Type and count
+
+#filter data to remove NA
+weapon_data = filter(weapon_data, !is.na(Weapon_Present))
+weapon_data
+
+write_csv(weapon_data, "weapon_data.csv")
+
+# Under the Influence (UI) Analysis
+UI_data <- arrest_data %>%
+  group_by(Drugs_or_Alcohol_Present) %>%
+  summarise(Total = n()) # grouping the data with Drugs or Alcohol Present data and count
+
+#filter data to remove NA
+UI_data = filter(UI_data, !is.na(Drugs_or_Alcohol_Present))
+UI_data
+
+colors1 = c("aquamarine2", "white", "lightgoldenrod1")
+pie(table(arrest_data$Drugs_or_Alcohol_Present), main = "Year 2018-2020 Arrests By UI", col=colors1, labels="")
+legend(1, 1, c("No","Unknown","Yes"), cex = 0.4, fill = colors1)
+
+# Crime Type Analysis
+crime_type_data <- arrest_data %>%
+  group_by(Primary_Charge) %>%
+  summarise(Total = n()) # grouping the data with Primary Charge and count
+
+#filter data to remove NA
+crime_type_data = filter(crime_type_data, !is.na(Primary_Charge))
+crime_type_data
+view(crime_type_data)
+
+
