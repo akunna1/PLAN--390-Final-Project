@@ -1,4 +1,5 @@
 # Set working directory to Source File Location
+# The CSV files used are on Sakai
 
 # Load libraries
 library(tidyverse)  # dealing with tabular data
@@ -176,7 +177,8 @@ colors = c("darkolivegreen1", "lavender", "pink", "white", "orange", "purple", "
 table(arrest_data$Race)
 pie(table(arrest_data$Race), main = "Year 2018-2020 Arrests By Race", col=colors, labels="")
 legend(1, 1, c("Asians","Blacks","Hispanics","Islanders","Others","Unknown"), cex = 0.4, fill = colors)
- dev.off()
+#dev.off() #Switch on or off when necessary
+#adjust margins if needed to prevent error message
 
 # Age Analysis
 age_summary_by_race <- arrest_data%>%
@@ -222,6 +224,7 @@ UI_data
 colors1 = c("aquamarine2", "white", "lightgoldenrod1")
 pie(table(arrest_data$Drugs_or_Alcohol_Present), main = "Year 2018-2020 Arrests By UI", col=colors1, labels="")
 legend(1, 1, c("No","Unknown","Yes"), cex = 0.4, fill = colors1)
+# adjust margins if needed to prevent error message
 
 # Crime Type Analysis
 crime_type_data <- arrest_data %>%
